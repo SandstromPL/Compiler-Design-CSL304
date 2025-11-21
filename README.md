@@ -85,9 +85,6 @@ Generating linear TAC using a bottom-up parser (Bison) is challenging because lo
 To compile and run the project:
 
 ```bash
-```
-
-```bash
 git clone https://github.com/SandstromPL/Compiler-Design-CSL304.git
 cd 3-assignment/
 ```
