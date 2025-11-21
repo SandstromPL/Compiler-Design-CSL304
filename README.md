@@ -84,6 +84,11 @@ Generating linear TAC using a bottom-up parser (Bison) is challenging because lo
 
 To compile and run the project:
 
+Install these , if u don't have on your Debian/Ubuntu/WSL system:
+```bash
+sudo apt update && sudo apt install flex bison build-essential
+```
+
 ```bash
 git clone https://github.com/SandstromPL/Compiler-Design-CSL304.git
 cd 3-assignment/
