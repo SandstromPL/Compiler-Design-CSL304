@@ -1,0 +1,137 @@
+/* MEGA TEST CASE: "Dungeon Simulation"
+   Tests: Deep Nesting, Scope Resolution (Symbol Table), 
+   Complex Arithmetic, Logical Precedence, 2D Array Simulation
+*/
+
+class Entity {
+    int id;
+    int hp;
+    int maxHp;
+    int damage;
+    bool isAlive;
+    
+    void heal(int amount) {
+        hp = hp + amount;
+    }
+}
+
+class MapConfig {
+    int width;
+    int height;
+    double difficulty;
+}
+
+class GameState {
+    bool running;
+    bool paused;
+    int score;
+}
+
+void main() {
+    /* --- 1. VARIABLE DECLARATIONS --- */
+    int i;
+    int j;
+    int index;
+    int temp;
+    int playerX;
+    int playerY;
+    double multiplier;
+    bool logicCheck;
+    
+    /* --- 2. OBJECT INSTANTIATION --- */
+    Entity player New(Entity);
+    Entity boss New(Entity);
+    MapConfig config New(MapConfig);
+    GameState state; 
+
+    /* --- 3. ARRAY DECLARATIONS --- */
+    /* Simulating a 10x10 grid using a 100-size 1D array */
+    grid NewArray(100, int); 
+    /* Lookup table for damage values */
+    damageTable NewArray(20, double);
+
+    /* --- 4. INITIALIZATION & ARITHMETIC --- */
+    state.running = true;
+    state.score = 0;
+    config.width = 10;
+    config.height = 10;
+    player.hp = 100;
+    player.maxHp = 100;
+    multiplier = 1.5;
+
+    /* --- 5. NESTED LOOPS (Matrix Initialization) --- */
+    /* TAC Challenge: Label management for inner vs outer loops */
+    for (i = 0; i < 10; i = i + 1) {
+        for (j = 0; j < 10; j = j + 1) {
+            /* Calculate 1D index from 2D coords: index = y * width + x */
+            index = i * 10 + j;
+            
+            /* Complex Modulo Arithmetic */
+            if (index % 2 == 0) {
+                grid[index] = 1; /* Wall */
+            } else {
+                grid[index] = 0; /* Path */
+            }
+        }
+    }
+
+    /* --- 6. WHILE LOOP WITH COMPLEX LOGIC --- */
+    playerX = 0;
+    while (player.hp > 0 && state.running == true) {
+        
+        /* --- 7. DEEP NESTING & DANGLING ELSE CHECK --- */
+        if (playerX < 10) {
+            if (grid[playerX] == 0) {
+                state.score = state.score + 10;
+                
+                /* Nested If inside If inside While */
+                if (state.score > 50) {
+                    printf("Level Up");
+                    player.damage = player.damage * 2;
+                }
+            } else {
+                /* This Else belongs to 'if (grid...)' */
+                player.hp = player.hp - 5;
+            }
+        } else {
+            /* This Else belongs to 'if (playerX < 10)' */
+            state.running = false;
+        }
+
+        /* --- 8. LOGICAL OPERATOR STRESS TEST (No Short Circuit) --- */
+        /* TAC Challenge: Must generate code to evaluate ALL parts */
+        logicCheck = (player.hp < 20 || state.score > 100) && (boss.isAlive != true);
+        
+        if (logicCheck) {
+            /* Complex mixed-type arithmetic */
+            /* Precedence: ( (5.5 * 2.0) + (100 / 2) ) - 5 */
+            multiplier = 5.5 * 2.0 + 100.0 / 2.0 - 5.0;
+            boss.isAlive = true;
+        }
+
+        /* --- 9. ARRAY INDEX IN ARRAY INDEX --- */
+        /* TAC Challenge: t0 = grid[i]; t1 = damageTable[t0]; */
+        temp = 0;
+        player.damage = damageTable[ grid[temp] ]; 
+
+        /* Increment loop counter */
+        playerX = playerX + 1;
+        
+        /* Break condition */
+        if (playerX >= 100) {
+            break; 
+        }
+    }
+
+    /* --- 10. DO-WHILE LOOP --- */
+    i = 5;
+    do {
+        damageTable[i] = i * 1.5;
+        i = i - 1;
+    } while (i > 0);
+
+    /* --- 11. FUNCTION CALLS --- */
+    player.heal(50);
+    
+    return 0;
+}

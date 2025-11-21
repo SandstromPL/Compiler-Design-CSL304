@@ -1,0 +1,65 @@
+// Single-line comment
+/* Multi-line comment example */
+
+class MathOps {
+  int x;
+  arr NewArray(5, double);
+
+  int add(int a, int b) {
+    return a + b;
+  }
+
+  bool check(double num) {
+    if (num >= 0.0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class Test {
+  int value;
+
+  void helper() {
+    int localVar;
+    localVar = 10;
+    while (localVar > 0) {
+      localVar = localVar - 1;
+      if (localVar == 5) {
+        break;
+      }
+    }
+  }
+
+  void loopDemo() {
+    int i;
+    for (i = 0; i < 3; i = i + 1) {
+      value = value + i;
+    }
+
+    do {
+      value = value - 1;
+    } while (value > 0);
+  }
+
+  void objectDemo() {
+    MathOps obj New(MathOps);
+    double res;
+    res = obj.add(3, 4);
+    bool valid;
+    valid = obj.check(res);
+  }
+
+  void arrayDemo() {
+    nums NewArray(3, double);
+    nums[0] = 1.1;
+    nums[1] = 2.2;
+    nums[2] = 3.3;
+  }
+
+}
+  void main() {
+    string msg;
+    msg = "Compilation successful";
+  }
