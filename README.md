@@ -85,6 +85,7 @@ Generating linear TAC using a bottom-up parser (Bison) is challenging because lo
 To compile and run the project:
 
 Install these , if u don't have on your Debian/Ubuntu/WSL system:
+
 ```bash
 sudo apt update && sudo apt install flex bison build-essential
 ```
@@ -105,6 +106,106 @@ Bigger testcase - Dungeon Simulation
 
 ```bash
 ./out < bigger_testcase.txt
+```
+input.txt:
+
+```bash
+/* Complex Test Case for CSL302 Assignment 3 
+   Features: Classes, Arrays, Nested Loops, Mixed Arithmetic, Logical Ops
+*/
+
+class Geometry {
+    double area;
+    
+    void setArea(double r) {
+        area = 3.14 * r * r;
+    }
+}
+
+class Vector {
+    int x;
+    int y;
+    
+    int magnitude() {
+        return x * x + y * y;
+    }
+}
+
+/* Main Function - Entry Point */
+void main() {
+    // 1. Declarations (Basic Types)
+    int i;
+    int j;
+    int count;
+    double result;
+    bool isValid;
+    bool finished;
+
+    // 2. Object Instantiation
+    // Syntax: ClassName ObjName New(ClassName);
+    Vector v1 New(Vector);
+    Geometry g1; 
+
+    // 3. Array Declaration
+    // Syntax: VarName NewArray(Size, Type);
+    numbers NewArray(20, int);
+    weights NewArray(10, double);
+
+    // 4. Initialization
+    i = 0;
+    count = 0;
+    isValid = true;
+    finished = false;
+    result = 0.0;
+
+    // 5. Populating Array (For Loop)
+    // TAC: Should generate labels L_FOR_COND, L_FOR_BODY, L_FOR_INC, L_FOR_END
+    for (i = 0; i < 10; i = i + 1) {
+        numbers[i] = i * 2 + 5;
+    }
+
+    // 6. Complex Control Flow (While with Nested If-Else)
+    // TAC: Should generate labels for While loop and If/Else jumps
+    i = 0;
+    while (i < 10) {
+        // Array Access and Mixed Arithmetic Precedence
+        // Precedence Test: '*' and '/' should happen before '+' and '-'
+        result = numbers[i] + 10.5 * 2.0 - 4.0 / 2.0;
+
+        // Nested Logic
+        if (result > 50.0) {
+            count = count + 1;
+            
+            // Deeply nested If
+            if (count >= 5) {
+                isValid = false;
+                break; // Test Break Statement
+            }
+        } else {
+            // Object Member Access
+            v1.x = i;
+            v1.y = count;
+            g1.area = result;
+        }
+
+        i = i + 1;
+    }
+
+    // 7. Do-While Loop
+    j = 10;
+    do {
+        j = j - 1;
+        weights[j] = result;
+    } while (j > 0);
+
+    // 8. Logical Operators (No Short Circuit)
+    // TAC: Should evaluate BOTH sides regardless of the first result
+    if (isValid == true && count < 10 || i > 5) {
+        result = -1.0;
+    }
+
+    return 0;
+}
 ```
 
 Output for input.txt(testcase):
